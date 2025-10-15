@@ -12,6 +12,12 @@ def match_word(input_line):
         if char.isalpha() or char.isdigit() or char=="_":
             return True
     return False
+def positive_Chgroups(input_line, pattern):
+    chars = pattern[1:-1]
+    for char in input_line:
+        if char in chars:
+            return True
+    return False
 
 def match_pattern(input_line, pattern):
     if len(pattern) == 1:
@@ -20,6 +26,8 @@ def match_pattern(input_line, pattern):
         return match_digit(input_line)
     elif pattern == r"\w":
        return match_word(input_line)
+    elif pattern[0] == "[" and pattern[-1] == "]":
+        return positive_Chgroups(input_line,pattern)
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
 
