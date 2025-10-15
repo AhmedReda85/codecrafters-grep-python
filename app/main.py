@@ -12,6 +12,11 @@ def match_pattern(input_line, pattern):
             if char.isdigit():
                 return True
         return False
+    elif pattern == r"\w":
+        for char in input_line:
+            if char.isalpha():
+                return True
+        return False
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
 
