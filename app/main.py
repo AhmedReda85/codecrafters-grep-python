@@ -2,21 +2,24 @@ import sys
 
 # import pyparsing - available if you need it!
 # import lark - available if you need it!
-
+def match_digit(input_line):
+    for char in input_line:
+        if char.isdigit():
+            return True
+    return False
+def match_word(input_line):
+    for char in input_line:
+        if char.isalpha() or char.isdigit() or char=="_":
+            return True
+    return False
 
 def match_pattern(input_line, pattern):
     if len(pattern) == 1:
         return pattern in input_line
     elif pattern == r"\d":
-        for char in input_line:
-            if char.isdigit():
-                return True
-        return False
+        return match_digit(input_line)
     elif pattern == r"\w":
-        for char in input_line:
-            if char.isalpha():
-                return True
-        return False
+       return match_word(input_line)
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
 
