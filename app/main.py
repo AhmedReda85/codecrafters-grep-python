@@ -19,11 +19,11 @@ def positive_ch_groups(input_line, pattern):
             return True
     return False
 def negative_ch_groups(input_line, pattern):
-    chars = pattern[2:-1]
+    chars = pattern[2:-1] #cat => [^abc]
     for char in input_line:
-        if char in chars:
-            return False
-    return True
+        if char not in chars:
+            return True
+    return False
 
 def match_pattern(input_line, pattern):
     if len(pattern) == 1:
